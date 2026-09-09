@@ -1,0 +1,53 @@
+<div class="qa-page">
+  <app-back-nav></app-back-nav>
+
+  <header class="qa-header">
+    <h1>Human Color Vision and Phototransduction</h1>
+    <p>Click a term or its question to reveal the definition from the study guide.</p>
+  </header>
+
+  <section class="qa-terms" aria-label="Key terms">
+    @for (entry of entries; track entry.term) {
+      <button
+        type="button"
+        class="term-chip"
+        [class.term-chip--open]="isOpen(entry.term)"
+        [attr.aria-pressed]="isOpen(entry.term)"
+        (click)="toggle(entry.term)"
+      >
+        {{ entry.term }}
+      </button>
+    }
+  </section>
+
+  <section class="qa-list" aria-label="Questions and answers">
+    @for (entry of entries; track entry.term) {
+      <article class="qa-entry" [class.qa-entry--open]="isOpen(entry.term)">
+        <button
+          type="button"
+          class="qa-question"
+          [attr.aria-expanded]="isOpen(entry.term)"
+          (click)="toggle(entry.term)"
+        >
+          <span class="qa-question__icon">{{ isOpen(entry.term) ? '−' : '+' }}</span>
+          <span class="qa-question__text">{{ entry.question }}</span>
+        </button>
+        @if (isOpen(entry.term)) {
+          <p class="qa-answer">{{ entry.answer }}</p>
+        }
+      </article>
+    }
+  </section>
+
+  <section class="qa-essays">
+    <h2>Essay Questions</h2>
+    <p class="qa-essays__note">
+      For deeper analysis. No answers were provided for these in the source material.
+    </p>
+    <ol>
+      @for (prompt of essayPrompts; track prompt.title) {
+        <li><strong>{{ prompt.title }}:</strong> {{ prompt.description }}</li>
+      }
+    </ol>
+  </section>
+</div>

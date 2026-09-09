@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "dgSpecHash": "+3GNnJVw2ec=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\juste\\source\\repos\\project-color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\juste\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.9\\microsoft.aspnetcore.openapi.10.0.9.nupkg.sha512",
+    "C:\\Users\\juste\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512",
+    "C:\\Users\\juste\\.nuget\\packages\\scalar.aspnetcore\\1.2.48\\scalar.aspnetcore.1.2.48.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1903",
+      "level": "Warning",
+      "message": "Package 'Microsoft.OpenApi' 2.0.0 has a known high severity vulnerability, https://github.com/advisories/GHSA-v5pm-xwqc-g5wc",
+      "projectPath": "C:\\Users\\juste\\source\\repos\\project-color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\juste\\source\\repos\\project-color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj",
+      "libraryId": "Microsoft.OpenApi",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
+}
