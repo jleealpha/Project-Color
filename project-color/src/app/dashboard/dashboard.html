@@ -1,6 +1,67 @@
-<p>dashboard works!</p>
-<nav>
-  <a routerLink="/">Home</a> |
-  <a routerLink="/test">Take the test</a> |
-  <a routerLink="/qa">Colorblindness Q&amp;A</a>
-</nav>
+<div class="dashboard">
+  <nav class="dashboard-nav">
+    <ul>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/qa">Learn More</a></li>
+    </ul>
+  </nav>
+
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1>Project Color</h1>
+      <p class="tagline">Discover Your Color Vision</p>
+    </header>
+
+    <section class="dashboard-overview">
+      <h2>What is Project Color?</h2>
+      <p>
+        Project Color is a web-based color vision screening tool designed to help you understand your
+        color vision in detail. Unlike simple yes/no tests, we provide a specific diagnosis of your
+        color vision type.
+      </p>
+      <div class="overview-features">
+        <div class="feature">
+          <h3>Comprehensive Testing</h3>
+          <p>
+            We combine two validated testing methods to assess your color vision across multiple
+            dimensions.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Personalized Results</h3>
+          <p>
+            Receive a detailed classification of your color vision, from normal trichromacy to specific
+            types of color vision deficiencies.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>No Account Needed</h3>
+          <p>
+            Complete the test immediately without creating an account. Your results are generated
+            in-session and ready to download.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    @if (error()) {
+      <div class="error-message">
+        <p>⚠️ {{ error() }}</p>
+      </div>
+    }
+
+    <section class="dashboard-actions">
+      @if (isLoading()) {
+        <button class="btn btn-primary btn-large" disabled>Loading...</button>
+      } @else {
+        <button class="btn btn-primary btn-large" (click)="startTest()">Start Test</button>
+      }
+    </section>
+
+    @if (testConfig()) {
+      <section class="dashboard-info">
+        <p class="text-muted">Test Version: {{ testConfig()?.version }}</p>
+      </section>
+    }
+  </div>
+</div>

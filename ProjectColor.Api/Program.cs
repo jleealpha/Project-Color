@@ -31,11 +31,11 @@ app.UseHttpsRedirection();
 app.MapGet("/api/v1/tests/config", (ITestService testService) =>
 {
     var config = testService.GetTestConfiguration();
+    // No DB calls or hookups right now, just console logging to simulate and confirm the frontend api call reaches the backend.
     Console.WriteLine("GET /api/v1/tests/config - returning test configuration");
     return Results.Ok(config);
 })
-.WithName("GetTestConfiguration")
-.WithOpenApi();
+.WithName("GetTestConfiguration");
 
 // Ishihara Test Endpoints
 app.MapPost("/api/v1/tests/ishihara/submit", (IshihiraTestResponse request, ITestService testService) =>
@@ -43,8 +43,7 @@ app.MapPost("/api/v1/tests/ishihara/submit", (IshihiraTestResponse request, ITes
     Console.WriteLine($"POST /api/v1/tests/ishihara/submit - received responses: {request.Responses.Count} plates");
     return Results.Ok(new { received = true });
 })
-.WithName("SubmitIshihiraTest")
-.WithOpenApi();
+.WithName("SubmitIshihiraTest");
 
 // Anomaloscope Test Endpoints
 app.MapPost("/api/v1/tests/anomaloscope/submit", (AnomaloscopeTestResponse request, ITestService testService) =>
@@ -53,8 +52,7 @@ app.MapPost("/api/v1/tests/anomaloscope/submit", (AnomaloscopeTestResponse reque
     var result = testService.ScoreTests(request);
     return Results.Ok(result);
 })
-.WithName("SubmitAnomaloscopeTest")
-.WithOpenApi();
+.WithName("SubmitAnomaloscopeTest");
 
 // Test Result Scoring
 app.MapPost("/api/v1/tests/score", (TestScoringRequest request, ITestService testService) =>
@@ -63,7 +61,6 @@ app.MapPost("/api/v1/tests/score", (TestScoringRequest request, ITestService tes
     var result = testService.ComputeFinalResult(request);
     return Results.Ok(result);
 })
-.WithName("ScoreTest")
-.WithOpenApi();
+.WithName("ScoreTest");
 
 app.Run();

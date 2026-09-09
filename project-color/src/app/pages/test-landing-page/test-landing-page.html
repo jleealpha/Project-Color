@@ -1,2 +1,110 @@
-<app-back-nav></app-back-nav>
-<p>test-landing-page works!</p>
+<div class="test-landing">
+  <app-back-nav></app-back-nav>
+
+  <div class="test-landing-container">
+    <header class="test-landing-header">
+      <h1>Color Vision Screening Test</h1>
+      <p class="subtitle">Before You Begin</p>
+    </header>
+
+    <section class="test-info">
+      <div class="info-card">
+        <h2>What to Expect</h2>
+        <p>
+          The color vision screening test consists of two parts, designed to assess your color vision
+          comprehensively:
+        </p>
+        <ul>
+          <li>
+            <strong>Ishihara-Style Plates (Part 1):</strong> You'll view a series of colored dot
+            patterns and identify the numbers or shapes you see. This test is quick and painless.
+          </li>
+          <li>
+            <strong>Anomaloscope Test (Part 2):</strong> You'll adjust colors to match a reference
+            color, similar to a clinical color-matching test. This allows us to measure the
+            characteristics of your color vision more precisely.
+          </li>
+        </ul>
+        <p class="duration">
+          <strong>Expected duration:</strong> 5–10 minutes total. Take your time—there's no time limit.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h2>Display Calibration</h2>
+        <p>
+          For accurate results, your display should be in a good state for color perception. Please
+          prepare your monitor:
+        </p>
+        <ul>
+          <li>
+            <strong>Brightness:</strong> Set your monitor to a comfortable brightness—not too dim and
+            not too bright. A good rule of thumb is that you should be able to clearly distinguish
+            light grays from white.
+          </li>
+          <li>
+            <strong>Avoid glare:</strong> Position yourself so glare from windows or bright lights
+            doesn't wash out the colors on your screen.
+          </li>
+          <li>
+            <strong>Disable blue-light filters:</strong> If your monitor or device has a blue-light
+            filter (e.g., Night Light on Windows), consider disabling it for the duration of the
+            test. These filters can distort color perception.
+          </li>
+          <li>
+            <strong>Ambient lighting:</strong> A dimly lit room is ideal. Very bright ambient light
+            can interfere with color perception on the screen.
+          </li>
+          <li>
+            <strong>Color profile:</strong> This test assumes a standard sRGB display. If you're
+            using a specialized color-managed monitor (e.g., for photo editing), results may vary.
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h2>Important Notes</h2>
+        <ul>
+          <li>
+            <strong>No medical diagnosis:</strong> This test is a screening tool and is not a
+            substitute for a clinical eye exam by an optometrist or ophthalmologist.
+          </li>
+          <li>
+            <strong>Privacy:</strong> Your results are computed in your browser and not stored on our
+            servers. You'll be able to download or print your result at the end.
+          </li>
+          <li>
+            <strong>One test per session:</strong> You can take the test as many times as you like,
+            but each attempt is independent.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="test-confirmation">
+      <div class="confirmation-card">
+        <label class="checkbox-label">
+          <input
+            type="checkbox"
+            [checked]="acknowledged()"
+            (change)="toggleAcknowledgment()"
+            class="checkbox-input"
+          />
+          <span class="checkbox-text">
+            I have calibrated my display and understand that this is a screening test, not a medical
+            diagnosis.
+          </span>
+        </label>
+      </div>
+
+      <button
+        class="btn btn-primary btn-large"
+        [disabled]="!acknowledged()"
+        (click)="beginTest()"
+      >
+        Begin Test
+      </button>
+    </section>
+  </div>
+</div>
+
