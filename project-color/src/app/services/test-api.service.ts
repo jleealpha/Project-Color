@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface TestConfig {
-  ishihiraPlateCount: number;
+  arrangementPlateCount: number;
   anomaloscopeColors: AnomaloscopeColor[];
   version: string;
 }
@@ -37,9 +37,9 @@ export class TestApiService {
     return this.http.get<TestConfig>(`${this.apiUrl}/tests/config`);
   }
 
-  submitIshihiraTest(responses: number[]): Observable<{ received: boolean }> {
-    console.log(`[TestApiService] Submitting Ishihira test with ${responses.length} responses`);
-    return this.http.post<{ received: boolean }>(`${this.apiUrl}/tests/ishihira/submit`, {
+  submitArrangementTest(responses: number[]): Observable<{ received: boolean }> {
+    console.log(`[TestApiService] Submitting arrangement test with ${responses.length} responses`);
+    return this.http.post<{ received: boolean }>(`${this.apiUrl}/tests/Arrangement/submit`, {
       responses,
     });
   }

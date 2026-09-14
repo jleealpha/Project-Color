@@ -8,6 +8,6 @@ export const routes: Routes = [
   { path: 'test-info', component: TestLandingPage },
   { path: 'test', component: TestLandingPage },
   { path: 'qa', component: ColorblindnessQa },
-  { path: 'ishihara', component: TestLandingPage },
+  { path: 'Arrangement', component: TestLandingPage },
   { path: '**', redirectTo: 'dashboard' },
 ];

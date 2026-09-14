@@ -37,13 +37,13 @@ app.MapGet("/api/v1/tests/config", (ITestService testService) =>
 })
 .WithName("GetTestConfiguration");
 
-// Ishihara Test Endpoints
-app.MapPost("/api/v1/tests/ishihara/submit", (IshihiraTestResponse request, ITestService testService) =>
+// Arrangement Test Endpoints
+app.MapPost("/api/v1/tests/Arrangement/submit", (ArrangementTestResponse request, ITestService testService) =>
 {
-    Console.WriteLine($"POST /api/v1/tests/ishihara/submit - received responses: {request.Responses.Count} plates");
+    Console.WriteLine($"POST /api/v1/tests/Arrangement/submit - received responses: {request.Responses.Count} plates");
     return Results.Ok(new { received = true });
 })
-.WithName("SubmitIshihiraTest");
+.WithName("SubmitArrangementTest");
 
 // Anomaloscope Test Endpoints
 app.MapPost("/api/v1/tests/anomaloscope/submit", (AnomaloscopeTestResponse request, ITestService testService) =>

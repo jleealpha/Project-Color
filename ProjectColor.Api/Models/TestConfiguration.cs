@@ -2,7 +2,7 @@ namespace ProjectColor.Api.Models;
 
 public class TestConfiguration
 {
-    public int IshihiraPlateCount { get; set; }
+    public int ArrangementPlateCount { get; set; }
     public List<AnomaloscopeColor> AnomaloscopeColors { get; set; } = new();
     public string Version { get; set; } = "1.0";
 }
@@ -17,7 +17,7 @@ public class AnomaloscopeColor
     public int ReferenceIntensity { get; set; }
 }
 
-public class IshihiraTestResponse
+public class ArrangementTestResponse
 {
     public List<int> Responses { get; set; } = new();
 }
@@ -37,7 +37,7 @@ public class AnomaloscopeTestResponse
 
 public class TestScoringRequest
 {
-    public IshihiraTestResponse? IshihiraResponses { get; set; }
+    public ArrangementTestResponse? ArrangementResponses { get; set; }
     public AnomaloscopeTestResponse? AnomaloscopeResponses { get; set; }
 }
 

@@ -10,7 +10,7 @@ public class TestService : ITestService
 
         return new TestConfiguration
         {
-            IshihiraPlateCount = 38,
+            ArrangementPlateCount = 38,
             AnomaloscopeColors = new List<AnomaloscopeColor>
             {
                 new AnomaloscopeColor

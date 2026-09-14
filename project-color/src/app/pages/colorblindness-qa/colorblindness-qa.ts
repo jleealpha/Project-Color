@@ -50,7 +50,7 @@ export class ColorblindnessQa {
       question:
         'What is the primary difference between a "dichromat" and an "anomalous trichromat" in the context of an anomaloscope test?',
       answer:
-        'An anomalous trichromat possesses three types of cones but requires a different proportion of red and green light to match a yellow reference than a normal observer. In contrast, a dichromat lacks one cone type entirely and can match the yellow reference to any mixture of red or green light simply by adjusting the light\'s intensity.',
+        "An anomalous trichromat possesses three types of cones but requires a different proportion of red and green light to match a yellow reference than a normal observer. In contrast, a dichromat lacks one cone type entirely and can match the yellow reference to any mixture of red or green light simply by adjusting the light's intensity.",
     },
     {
       term: 'OLED Burn-In',
@@ -90,23 +90,28 @@ export class ColorblindnessQa {
   protected readonly essayPrompts: EssayPrompt[] = [
     {
       title: 'Intervention Efficacy',
-      description: 'Compare and contrast the effectiveness of passive optical aids (like EnChroma and VINO glasses) with active medical interventions (such as gene therapy for achromatopsia). Discuss the limitations of each in "curing" color vision deficiency.',
+      description:
+        'Compare and contrast the effectiveness of passive optical aids (like EnChroma and VINO glasses) with active medical interventions (such as gene therapy for achromatopsia). Discuss the limitations of each in "curing" color vision deficiency.',
     },
     {
       title: 'The Genetics of Vision',
-      description: 'Detail the molecular mechanisms of unequal homologous recombination at the Xq28 locus. How do these genetic "misalignments" lead to the specific variations seen in protan and deutan defects?',
+      description:
+        'Detail the molecular mechanisms of unequal homologous recombination at the Xq28 locus. How do these genetic "misalignments" lead to the specific variations seen in protan and deutan defects?',
     },
     {
       title: 'Display Technology and Human Physiology',
-      description: 'Analyze how OLED display engineering (specifically Super Retina XDR) attempts to mimic or accommodate the high standards of human visual perception, particularly regarding contrast, color accuracy, and high dynamic range.',
+      description:
+        'Analyze how OLED display engineering (specifically Super Retina XDR) attempts to mimic or accommodate the high standards of human visual perception, particularly regarding contrast, color accuracy, and high dynamic range.',
     },
     {
       title: 'Neural Pathways',
-      description: 'Discuss the parallel processing streams in the primate retina (Parvocellular, Magnocellular, and Koniocellular). How do these pathways reconcile the trichromatic theory of detection with the opponent-process theory of perception?',
+      description:
+        'Discuss the parallel processing streams in the primate retina (Parvocellular, Magnocellular, and Koniocellular). How do these pathways reconcile the trichromatic theory of detection with the opponent-process theory of perception?',
     },
     {
       title: 'Diagnostic Accuracy',
-      description: 'Evaluate the anomaloscope as the "gold standard" for clinical diagnosis. Why is it superior to simpler tests like the Ishihara plates or FM-100 Hue test in distinguishing between dichromacy and anomalous trichromacy?',
+      description:
+        'Evaluate the anomaloscope as the "gold standard" for clinical diagnosis. Why is it superior to simpler tests like the Arrangement plates or FM-100 Hue test in distinguishing between dichromacy and anomalous trichromacy?',
     },
   ];
 
