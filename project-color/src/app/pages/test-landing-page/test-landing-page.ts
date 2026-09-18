@@ -21,7 +21,7 @@ export class TestLandingPage {
   protected beginTest(): void {
     if (this.acknowledged()) {
       console.log('[TestLandingPage] Beginning test');
-      this.router.navigate(['/Arrangement']);
+      this.router.navigate(['/anomaloscope']);
     }
   }
 }

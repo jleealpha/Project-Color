@@ -1,0 +1,41 @@
+<div class="rotary-knob">
+  <div class="rotary-knob__dial">
+    @if (arcLabel) {
+      <span class="rotary-knob__arc-label">{{ arcLabel }}</span>
+    }
+    @if (minLabel) {
+      <span class="rotary-knob__end-label rotary-knob__end-label--min" [ngClass]="minLabelClass">{{
+        minLabel
+      }}</span>
+    }
+    @if (maxLabel) {
+      <span class="rotary-knob__end-label rotary-knob__end-label--max" [ngClass]="maxLabelClass">{{
+        maxLabel
+      }}</span>
+    }
+    @for (i of ticks; track i) {
+      <span class="rotary-knob__tick" [style.transform]="'rotate(' + tickAngle(i) + 'deg)'"></span>
+    }
+
+    <div
+      #knobBody
+      class="rotary-knob__body"
+      role="slider"
+      tabindex="0"
+      [attr.aria-valuenow]="value"
+      [attr.aria-valuemin]="0"
+      [attr.aria-valuemax]="100"
+      [attr.aria-label]="caption || arcLabel"
+      (pointerdown)="onPointerDown($event)"
+      (pointermove)="onPointerMove($event)"
+      (pointerup)="onPointerUp($event)"
+      (keydown)="onKeyDown($event)"
+    >
+      <span class="rotary-knob__pointer" [style.transform]="'rotate(' + pointerAngle + 'deg)'"></span>
+    </div>
+  </div>
+
+  @if (caption) {
+    <div class="rotary-knob__caption">{{ caption }}</div>
+  }
+</div>

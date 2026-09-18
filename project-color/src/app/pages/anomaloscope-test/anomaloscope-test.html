@@ -1,0 +1,51 @@
+<div class="anomaloscope-test">
+  <app-back-nav></app-back-nav>
+
+  <div class="anomaloscope-test-container">
+    <header class="anomaloscope-header">
+      <h1>Anomaloscope Test</h1>
+      <p class="subtitle">
+        Turn the <strong>Mixture</strong> knob to blend red and green light until the top half of the
+        circle matches the bottom half. Use <strong>Brightness</strong> to fine-tune the test color.
+      </p>
+    </header>
+
+    <div class="anomaloscope-stage">
+      <app-rotary-knob
+        class="stage-knob"
+        caption="Mixture"
+        minLabel="Red"
+        maxLabel="Green"
+        minLabelClass="label-red"
+        maxLabelClass="label-green"
+        [tickCount]="7"
+        [value]="mixtureValue()"
+        (valueChange)="onMixtureChange($event)"
+      ></app-rotary-knob>
+
+      <div class="anomaloscope-circle" aria-hidden="true">
+        <div class="anomaloscope-circle__half anomaloscope-circle__half--mixture" [style.background]="mixtureColor">
+          <span>Mixture Color</span>
+        </div>
+        <div class="anomaloscope-circle__half anomaloscope-circle__half--test" [style.background]="testColor">
+          <span>Test Color</span>
+        </div>
+      </div>
+
+      <app-rotary-knob
+        class="stage-knob"
+        caption="Test"
+        arcLabel="Brightness"
+        [tickCount]="0"
+        [value]="brightnessValue()"
+        (valueChange)="onBrightnessChange($event)"
+      ></app-rotary-knob>
+    </div>
+
+    <div class="anomaloscope-actions">
+      <button type="button" class="btn btn-primary btn-large" (click)="submitMatch()">
+        Submit Match
+      </button>
+    </div>
+  </div>
+</div>
