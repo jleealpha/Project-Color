@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\juste\\source\\repos\\project-color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj": {}
+    "C:\\source\\Project Color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\juste\\source\\repos\\project-color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj": {
+    "C:\\source\\Project Color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\juste\\source\\repos\\project-color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj",
+        "projectUniqueName": "C:\\source\\Project Color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj",
         "projectName": "ProjectColor.Api",
-        "projectPath": "C:\\Users\\juste\\source\\repos\\project-color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj",
+        "projectPath": "C:\\source\\Project Color\\Project-Color\\ProjectColor.Api\\ProjectColor.Api.csproj",
         "packagesPath": "C:\\Users\\juste\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\juste\\source\\repos\\project-color\\Project-Color\\ProjectColor.Api\\obj\\",
+        "outputPath": "C:\\source\\Project Color\\Project-Color\\ProjectColor.Api\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\juste\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\juste\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -46,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "net10.0": {
@@ -56,6 +49,22 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[10.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[10.0.12, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[10.0.3, )"
             },
             "Scalar.AspNetCore": {
               "target": "Package",
@@ -81,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
