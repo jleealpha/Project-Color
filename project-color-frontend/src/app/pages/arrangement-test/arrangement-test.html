@@ -1,0 +1,95 @@
+<div class="arrangement-test">
+  <app-back-nav></app-back-nav>
+
+  <div class="arrangement-container">
+    @if (phase() === 'interlock') {
+      <header class="arrangement-header">
+        <h1>Prepare Your Display</h1>
+        <p class="subtitle">
+          Accurate colors are essential. A web page can't verify these settings, so please confirm
+          each one before starting.
+        </p>
+      </header>
+
+      @if (!p3Supported) {
+        <p class="warning" role="alert">
+          This screen doesn't report a Display P3 gamut. Saturated red and blue swatches may look
+          less vivid, which can affect results.
+        </p>
+      }
+
+      <ul class="checklist">
+        <li>
+          <label>
+            <input type="checkbox" [checked]="checks().nightShift" (change)="toggleCheck('nightShift')" />
+            Night Shift / blue-light filter is turned off
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" [checked]="checks().trueTone" (change)="toggleCheck('trueTone')" />
+            True Tone / adaptive color is turned off
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" [checked]="checks().brightness" (change)="toggleCheck('brightness')" />
+            Screen brightness is set to 100%
+          </label>
+        </li>
+      </ul>
+
+      <div class="arrangement-actions">
+        <button type="button" class="btn btn-primary btn-large" [disabled]="!allChecked()" (click)="begin()">
+          Start Test
+        </button>
+      </div>
+    } @else {
+      <header class="arrangement-header">
+        <h1>
+          @if (phase() === 'stage2') {
+            Fine Sorting
+          } @else {
+            Color Sorting &mdash; Tray {{ trayIndex() + 1 }} of {{ trayCount }}
+          }
+        </h1>
+        <p class="subtitle">
+          Arrange the colors so they shift smoothly from the left anchor to the right anchor. Drag a
+          swatch, or tap one and then tap another to swap them. The end swatches are fixed.
+        </p>
+      </header>
+
+      <div class="tray" role="list">
+        @for (swatch of arrangement(); track swatch.id; let i = $index) {
+          <button
+            type="button"
+            role="listitem"
+            class="swatch"
+            [class.swatch--fixed]="swatch.fixed"
+            [class.swatch--selected]="selectedIndex() === i"
+            [style.background]="swatch.color"
+            [attr.aria-label]="swatch.fixed ? 'Fixed anchor swatch' : 'Swatch ' + (i + 1)"
+            [attr.aria-pressed]="selectedIndex() === i"
+            [disabled]="swatch.fixed"
+            [draggable]="!swatch.fixed"
+            (click)="selectSwatch(i)"
+            (dragstart)="onDragStart(i)"
+            (dragover)="$event.preventDefault()"
+            (drop)="onDrop(i)"
+          ></button>
+        }
+      </div>
+
+      <div class="arrangement-actions">
+        <button
+          type="button"
+          class="btn btn-primary btn-large"
+          [disabled]="phase() === 'submitting'"
+          (click)="submitArrangement()"
+        >
+          {{ phase() === 'stage1' && trayIndex() < trayCount - 1 ? 'Next Tray' : 'Submit' }}
+        </button>
+      </div>
+    }
+  </div>
+</div>

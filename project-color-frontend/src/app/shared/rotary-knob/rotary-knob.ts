@@ -23,16 +23,17 @@ export class RotaryKnob {
   @Input() maxLabelClass = '';
   /** Number of dash ticks drawn along the arc. 0 disables ticks. */
   @Input() tickCount = 7;
-  @Input() value = 50;
+  /** Current knob position as a percentage (0-100) from the low end of its travel to the high end. */
+  @Input() valuePercent = 50;
 
-  @Output() valueChange = new EventEmitter<number>();
+  @Output() valuePercentChange = new EventEmitter<number>();
 
   protected readonly dragging = signal(false);
 
   @ViewChild('knobBody') private knobBody!: ElementRef<HTMLDivElement>;
 
   protected get pointerAngle(): number {
-    return MIN_ANGLE + (this.value / 100) * (MAX_ANGLE - MIN_ANGLE);
+    return MIN_ANGLE + (this.valuePercent / 100) * (MAX_ANGLE - MIN_ANGLE);
   }
 
   protected get ticks(): number[] {
@@ -77,10 +78,10 @@ export class RotaryKnob {
     const step = event.shiftKey ? 10 : 2;
     if (event.key === 'ArrowUp' || event.key === 'ArrowRight') {
       event.preventDefault();
-      this.setValue(this.value + step);
+      this.setValue(this.valuePercent + step);
     } else if (event.key === 'ArrowDown' || event.key === 'ArrowLeft') {
       event.preventDefault();
-      this.setValue(this.value - step);
+      this.setValue(this.valuePercent - step);
     } else if (event.key === 'Home') {
       event.preventDefault();
       this.setValue(0);
@@ -91,7 +92,7 @@ export class RotaryKnob {
   }
 
   private setValue(next: number): void {
-    this.value = Math.max(0, Math.min(100, next));
-    this.valueChange.emit(this.value);
+    this.valuePercent = Math.max(0, Math.min(100, next));
+    this.valuePercentChange.emit(this.valuePercent);
   }
 }

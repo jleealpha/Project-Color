@@ -19,8 +19,8 @@
         minLabelClass="label-red"
         maxLabelClass="label-green"
         [tickCount]="7"
-        [value]="mixtureValue()"
-        (valueChange)="onMixtureChange($event)"
+        [valuePercent]="mixtureValue()"
+        (valuePercentChange)="onMixtureChange($event)"
       ></app-rotary-knob>
 
       <div class="anomaloscope-circle" aria-hidden="true">
@@ -37,8 +37,8 @@
         caption="Test"
         arcLabel="Brightness"
         [tickCount]="0"
-        [value]="brightnessValue()"
-        (valueChange)="onBrightnessChange($event)"
+        [valuePercent]="brightnessValue()"
+        (valuePercentChange)="onBrightnessChange($event)"
       ></app-rotary-knob>
     </div>
 
