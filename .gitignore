@@ -20,6 +20,10 @@ node_modules/
 /.angular-cli.json
 /.ng/
 
+# .NET build output
+/ProjectColor.Api/bin/
+/ProjectColor.Api/obj/
+
 # TypeScript cache
 *.tsbuildinfo
 
