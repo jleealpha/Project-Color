@@ -52,7 +52,7 @@ export class AnomaloscopeTest {
 
     console.log('[AnomaloscopeTest] Submitting match', match);
     this.testApiService.submitAnomaloscopeTest([match]).subscribe({
-      next: () => this.router.navigate(['/dashboard']),
+      next: () => this.router.navigate(['/saturation']),
       error: (err) => console.error('[AnomaloscopeTest] Failed to submit match:', err),
     });
   }

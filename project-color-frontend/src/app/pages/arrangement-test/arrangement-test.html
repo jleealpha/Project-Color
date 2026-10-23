@@ -80,6 +80,10 @@
         }
       </div>
 
+      @if (submissionError()) {
+        <p class="submission-error" role="alert">{{ submissionError() }}</p>
+      }
+
       <div class="arrangement-actions">
         <button
           type="button"

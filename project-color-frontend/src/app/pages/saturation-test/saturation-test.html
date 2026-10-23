@@ -1,0 +1,142 @@
+<div class="saturation-test">
+  <app-back-nav></app-back-nav>
+
+  <main class="saturation-container">
+    <header class="saturation-header">
+      <p class="eyebrow">Final test · Part 3 of 3</p>
+      <h1>Dynamic Saturation &amp; Spatial Contrast</h1>
+      <p class="subtitle">
+        Find the direction of the gap in the moving ring. Color purity changes with your responses:
+        correct answers make it subtler, while consecutive errors make it more visible.
+      </p>
+      <span class="axis-label">Illustrative red–green demo axis</span>
+    </header>
+
+    @if (phase() === 'active') {
+      <section class="test-card" aria-labelledby="stimulus-instructions">
+        <div class="trial-status" aria-live="polite">
+          <span>Trial {{ responses().length + 1 }}</span>
+          <span>Color purity: {{ saturation() }}%</span>
+        </div>
+
+        <h2 id="stimulus-instructions">Which direction does the gap point?</h2>
+        <p class="keyboard-hint">Choose a direction below or press the ← / → arrow key.</p>
+
+        <div class="stimulus-field" aria-label="Moving colored ring over luminance noise">
+          <div class="noise-field" aria-hidden="true">
+            @for (dot of noiseDots; track dot.id) {
+              <span
+                class="noise-dot"
+                [style.left.%]="dot.x"
+                [style.top.%]="dot.y"
+                [style.width.px]="dot.size"
+                [style.height.px]="dot.size"
+                [style.opacity]="dot.opacity"
+                [style.backgroundColor]="
+                  'rgb(' + dot.luminance + ', ' + dot.luminance + ', ' + dot.luminance + ')'
+                "
+              ></span>
+            }
+          </div>
+          <div class="moving-target" aria-hidden="true">
+            <svg viewBox="0 0 200 200">
+              <circle
+                cx="100"
+                cy="100"
+                r="52"
+                fill="none"
+                [attr.stroke]="targetColor"
+                stroke-width="20"
+                stroke-linecap="butt"
+                stroke-dasharray="275 52"
+                [attr.transform]="
+                  'rotate(' + (targetDirection() === 'left' ? 180 : 0) + ' 100 100)'
+                "
+              />
+            </svg>
+          </div>
+        </div>
+
+        <p class="feedback" aria-live="polite">
+          @if (feedback() === 'correct') {
+            Correct — the target will be a little less saturated.
+          } @else if (feedback() === 'incorrect') {
+            Not quite. Keep going; consecutive errors increase the saturation.
+          } @else {
+            The target moves through the noise field between responses.
+          }
+        </p>
+
+        <div
+          class="direction-controls"
+          role="group"
+          aria-label="Select the direction of the target gap"
+        >
+          <button
+            type="button"
+            class="direction-button"
+            data-direction="left"
+            (click)="chooseDirection('left')"
+          >
+            <span aria-hidden="true">←</span>
+            Left
+          </button>
+          <button
+            type="button"
+            class="direction-button"
+            data-direction="right"
+            (click)="chooseDirection('right')"
+          >
+            Right
+            <span aria-hidden="true">→</span>
+          </button>
+        </div>
+
+        <button type="button" class="finish-button" (click)="finishTest()">Finish test</button>
+      </section>
+    } @else {
+      <section class="test-card completion-card" aria-labelledby="completion-heading">
+        <p class="eyebrow">Session complete</p>
+        <h2 id="completion-heading">Your response profile</h2>
+        <p class="completion-summary">
+          You answered {{ correctCount() }} of {{ responses().length }} trials correctly. This chart
+          shows the color purity presented during your responses.
+        </p>
+
+        <div class="chart-wrap">
+          <svg
+            class="response-chart"
+            viewBox="0 0 500 200"
+            role="img"
+            aria-label="Illustrative response history showing color purity by trial"
+          >
+            <line x1="30" y1="20" x2="30" y2="170" class="chart-axis" />
+            <line x1="30" y1="170" x2="470" y2="170" class="chart-axis" />
+            <line x1="30" y1="95" x2="470" y2="95" class="chart-grid" />
+            @if (chartPoints().length > 1) {
+              <polyline [attr.points]="chartPolyline()" class="chart-line" />
+            }
+            @for (point of chartPoints(); track point.trial) {
+              <circle
+                [attr.cx]="point.x"
+                [attr.cy]="point.y"
+                r="5"
+                [class.chart-point--correct]="point.correct"
+                [class.chart-point--incorrect]="!point.correct"
+                class="chart-point"
+              />
+            }
+          </svg>
+          <div class="chart-labels" aria-hidden="true">
+            <span>Higher purity</span>
+            <span>Trial</span>
+            <span>Lower purity</span>
+          </div>
+        </div>
+        <button type="button" class="primary-button" (click)="returnToDashboard()">
+          Return to dashboard
+        </button>
+      </section>
+    }
+  </main>
+</div>

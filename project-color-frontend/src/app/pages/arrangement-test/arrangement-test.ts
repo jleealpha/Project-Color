@@ -27,6 +27,7 @@ export class ArrangementTest {
   protected readonly arrangement = signal<Swatch[]>([]);
   protected readonly selectedIndex = signal<number | null>(null);
   protected readonly dragIndex = signal<number | null>(null);
+  protected readonly submissionError = signal<string | null>(null);
 
   protected readonly checks = signal({ nightShift: false, trueTone: false, brightness: false });
   protected readonly allChecked = computed(() => Object.values(this.checks()).every(Boolean));
@@ -128,6 +129,7 @@ export class ArrangementTest {
   }
 
   private submit(): void {
+    this.submissionError.set(null);
     this.phase.set('submitting');
     const responses = [...this.stage1Results, this.stage2Result]
       .filter((tray) => tray.length > 0)
@@ -138,6 +140,9 @@ export class ArrangementTest {
       next: () => this.router.navigate(['/anomaloscope']),
       error: (err) => {
         console.error('[ArrangementTest] Failed to submit arrangement:', err);
+        this.submissionError.set(
+          'Something went wrong while submitting your results. Check your connection and try again.',
+        );
         this.phase.set(this.stage2Result.length > 0 ? 'stage2' : 'stage1');
       },
     });

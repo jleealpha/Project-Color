@@ -107,6 +107,18 @@
   justify-content: center;
 }
 
+.submission-error {
+  max-width: 640px;
+  margin: 0 auto 1.5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid #e2a39a;
+  border-radius: 8px;
+  background: #fff0ed;
+  color: #842c21;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .btn {
   padding: 0.75rem 1.5rem;
   border: none;
