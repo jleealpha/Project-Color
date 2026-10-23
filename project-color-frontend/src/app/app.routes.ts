@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { Dashboard } from './dashboard/dashboard';
+import { Dashboard } from './components/dashboard/dashboard';
 import { TestLandingPage } from './pages/test-landing-page/test-landing-page';
 import { ColorblindnessQa } from './pages/colorblindness-qa/colorblindness-qa';
 import { AnomaloscopeTest } from './pages/anomaloscope-test/anomaloscope-test';

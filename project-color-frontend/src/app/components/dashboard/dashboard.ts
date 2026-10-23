@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
-import { TestApiService, TestConfig } from '../services/test-api.service';
+import { TestApiService, TestConfig } from '../../services/test-api.service';
 
 @Component({
   imports: [RouterLink],
